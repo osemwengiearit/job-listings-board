@@ -12,6 +12,13 @@ function App() {
     }
   }
 
+  // FILTERING LOGIC
+  const filteredJobs = jobs.filter((job) => {
+    const tags = [job.role, job.level, ...job.languages, ...job.tools];
+
+    return filters.every((filter) => tags.includes(filter));
+  });
+
   if (loading) {
     return <p className="p-10 text-center">Loading jobs...</p>;
   }
@@ -27,7 +34,7 @@ function App() {
       </h1>
 
       <div className="grid gap-6 max-w-5xl mx-auto">
-        {jobs.map((job) => (
+        {(filters.length > 0 ? filteredJobs : jobs).map((job) => (
           <JobCard key={job.id} job={job} addFilter={addFilter} />
         ))}
       </div>
