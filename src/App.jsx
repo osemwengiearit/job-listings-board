@@ -1,19 +1,23 @@
+import { useState } from "react";
 import useJobs from "./hooks/useJobs";
 import JobCard from "./components/JobCard";
 
 function App() {
   const { jobs, loading, error } = useJobs();
+  const [filters, setFilters] = useState([]);
 
-  // Loading state
-  if (loading) {
-    return (
-      <p className="p-10 text-center text-lg font-semibold">Loading jobs...</p>
-    );
+  function addFilter(tag) {
+    if (!filters.includes(tag)) {
+      setFilters([...filters, tag]);
+    }
   }
 
-  // Error state
+  if (loading) {
+    return <p className="p-10 text-center">Loading jobs...</p>;
+  }
+
   if (error) {
-    return <p className="text-red-500 p-10 text-center">Error: {error}</p>;
+    return <p className="p-10 text-red-500 text-center">{error}</p>;
   }
 
   return (
@@ -24,7 +28,7 @@ function App() {
 
       <div className="grid gap-6 max-w-5xl mx-auto">
         {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
+          <JobCard key={job.id} job={job} addFilter={addFilter} />
         ))}
       </div>
     </div>
