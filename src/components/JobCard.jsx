@@ -23,6 +23,26 @@ function JobCard({ job }) {
           {job.level}
         </span>
       </div>
+
+      <div className="flex flex-wrap gap-2 mt-3">
+        {job.languages.map((lang) => (
+          <span
+            key={lang}
+            className="bg-teal-100 text-teal-700 px-3 py-1 rounded cursor-pointer hover:bg-teal-500 hover:text-white"
+          >
+            {lang}
+          </span>
+        ))}
+
+        {job.tools.map((tool) => (
+          <span
+            key={tool}
+            className="bg-teal-100 text-teal-700 px-3 py-1 rounded cursor-pointer hover:bg-teal-500 hover:text-white"
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
