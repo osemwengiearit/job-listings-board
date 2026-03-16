@@ -4,7 +4,11 @@ function JobCard({ job, addFilter }) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md border flex flex-col gap-3">
       <div className="flex items-center gap-4">
-        <img src={job.logo} alt={job.company} className="w-12 h-12" />
+        <img
+          src={`/images/${job.logo.replace("./", "")}`}
+          alt={job.company}
+          className="w-14 h-14 object-contain"
+        />
 
         <div>
           <h2 className="font-bold text-lg">{job.company}</h2>
