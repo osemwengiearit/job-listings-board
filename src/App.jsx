@@ -28,12 +28,12 @@ function App() {
   }
 
   return (
-    <div className="p-10 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+    <div className="bg-cream min-h-screen font-body px-4 md:px-12 py-10">
+      <h1 className="text-3xl md:text-4xl font-display text-brown text-center mb-10">
         Job Listings Board
       </h1>
 
-      <div className="grid gap-6 max-w-5xl mx-auto">
+      <div className="grid gap-4 md:gap-6 max-w-5xl mx-auto">
         {(filters.length > 0 ? filteredJobs : jobs).map((job) => (
           <JobCard key={job.id} job={job} addFilter={addFilter} />
         ))}
