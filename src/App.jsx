@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useJobs from "./hooks/useJobs";
 import JobCard from "./components/JobCard";
+import FilterBar from "./components/FilterBar";
 
 function App() {
   const { jobs, loading, error } = useJobs();
@@ -10,6 +11,14 @@ function App() {
     if (!filters.includes(tag)) {
       setFilters([...filters, tag]);
     }
+  }
+
+  function removeFilter(tag) {
+    setFilters(filters.filter((f) => f !== tag));
+  }
+
+  function clearFilters() {
+    setFilters([]);
   }
 
   // FILTERING LOGIC
@@ -32,6 +41,14 @@ function App() {
       <h1 className="text-3xl md:text-4xl font-display text-brown text-center mb-10">
         Job Listings Board
       </h1>
+
+      {filters.length > 0 && (
+        <FilterBar
+          filters={filters}
+          removeFilter={removeFilter}
+          clearFilters={clearFilters}
+        />
+      )}
 
       <div className="grid gap-4 md:gap-6 max-w-5xl mx-auto">
         {(filters.length > 0 ? filteredJobs : jobs).map((job) => (
