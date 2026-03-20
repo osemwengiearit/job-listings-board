@@ -25,9 +25,7 @@ This project is a responsive Job Listings Board built with React and Tailwind CS
 
 Job listings are fetched from:
 
-https://jobs-api-l3e2.onrender.com/api/jobs
-
-## Installation
+https://jobs-api-bgrn.onrender.com/
 
 Clone the repository:
 
